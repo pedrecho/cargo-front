@@ -23,6 +23,7 @@ export function BarberShop() {
 
     const [search, setSearch] = React.useState('')
     const [gist, setGist] = React.useState<any>([])
+    const [average, setAverage] = React.useState<number>(0)
 
     React.useEffect(() => {
         const promise = axios({
@@ -58,6 +59,7 @@ export function BarberShop() {
 
     React.useEffect(() => {
         let arr: any[] = [];
+        let total: number = 0;
         for(let i = DAYS - 1; i >= 0; i--){
             let count = 0;
             const day = new Date(Date.now()-86400000 * i);
@@ -65,11 +67,14 @@ export function BarberShop() {
             for(let j = 0; j < initialBarberClients.length; j++){
                 if(initialBarberClients[j].appointment === formattedToday){
                     count++;
+
                 }
             }
             arr.push({date: formattedToday, count})
+            total += count;
         }
         setGist(arr)
+        setAverage(Math.ceil(total / DAYS))
     }, [initialBarberClients])
 
     const labels = [...gist.map((el) => el.date)];
@@ -129,6 +134,7 @@ export function BarberShop() {
                 ))}
                 </tbody>
             </table>
+            <p>Среднее кол-во записей за последние {DAYS} дней: {average}</p>
             <Bar data={data}/>
         </div>
     )
