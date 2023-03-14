@@ -15,7 +15,7 @@ export function DevicePage(){
     React.useEffect(() => {
         const res = axios({
             method: 'get',
-            url: `http://localhost:8082/device/${id}`,
+            url: `http://localhost:8080/device/${id}`,
             headers: { "Content-Type": "multipart/form-data", Authorization: `Bearer ${localStorage.getItem('token')}` },
         })
         res.then((res) => {
@@ -30,7 +30,7 @@ export function DevicePage(){
     const deleteDevice = () => {
         axios({
             method: 'post',
-            url: `http://localhost:8082/device/${devices.id}`,
+            url: `http://localhost:8080/device/${devices.id}`,
             headers: { "Content-Type": "multipart/form-data", Authorization: `Bearer ${localStorage.getItem('token')}` },
         }).then(() =>
             redirect('/storage')
@@ -40,7 +40,7 @@ export function DevicePage(){
     const saveDevice = () => {
         const res = axios({
             method: 'post',
-            url: `http://localhost:8082/device`,
+            url: `http://localhost:8080/device`,
             data: devices,
             headers: { "Content-Type": "multipart/form-data", Authorization: `Bearer ${localStorage.getItem('token')}` },
         })

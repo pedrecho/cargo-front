@@ -19,7 +19,7 @@ export function CreateCargo(){
     const addCargo= ()=>{
         const res = axios({
             method: 'post',
-                url: 'http://localhost:8082/cargo',
+                url: 'http://localhost:8080/cargo',
                 data: cargos,
                 headers: { "Content-Type": "multipart/form-data", Authorization: `Bearer ${localStorage.getItem('token')}` },
 

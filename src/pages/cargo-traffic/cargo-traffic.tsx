@@ -29,7 +29,7 @@ export function CargoTraffic() {
     React.useEffect(() => {
         const promise = axios({
             method: 'get',
-            url: 'http://localhost:8082/cargo',
+            url: 'http://localhost:8080/cargo',
             headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}
         })
         promise.then((res) => {

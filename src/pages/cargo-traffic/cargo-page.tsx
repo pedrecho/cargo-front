@@ -20,7 +20,7 @@ export function CargoPage(){
     React.useEffect(() =>{
         const res = axios({
                 method: 'get',
-                url: `http://localhost:8082/cargo/${id}`,
+                url: `http://localhost:8080/cargo/${id}`,
                 headers: {"Content-Type": "multipart/form-data", Authorization: `Bearer ${localStorage.getItem('token')}`},
             })
         res.then((res) =>{
@@ -35,7 +35,7 @@ export function CargoPage(){
     const deleteCargo = () => {
         axios({
             method: 'post',
-            url: `http://localhost:8082/cargo/${cargos.id}`,
+            url: `http://localhost:8080/cargo/${cargos.id}`,
             headers: { "Content-Type": "multipart/form-data", Authorization: `Bearer ${localStorage.getItem('token')}` },
         }).then(() =>
             redirect('/cargo-traffic')
@@ -45,7 +45,7 @@ export function CargoPage(){
     const saveCargo = () => {
         const res = axios({
             method: 'post',
-            url: `http://localhost:8082/cargo`,
+            url: `http://localhost:8080/cargo`,
             data: cargos,
             headers: { "Content-Type": "multipart/form-data", Authorization: `Bearer ${localStorage.getItem('token')}` },
         })

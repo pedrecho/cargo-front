@@ -12,7 +12,7 @@ export function CreateBook(){
     const addBook = () => {
         const res = axios({
             method: 'post',
-            url: 'http://localhost:8082/book',
+            url: 'http://localhost:8080/book',
             data: book,
             headers: { "Content-Type": "multipart/form-data", Authorization: `Bearer ${localStorage.getItem('token')}` },
         })

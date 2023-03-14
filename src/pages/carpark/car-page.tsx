@@ -15,7 +15,7 @@ export function CarPage(){
     React.useEffect(() => {
         const res = axios({
             method: 'get',
-            url: `http://localhost:8082/car/${id}`,
+            url: `http://localhost:8080/car/${id}`,
             headers: { "Content-Type": "multipart/form-data", Authorization: `Bearer ${localStorage.getItem('token')}` },
         })
         res.then((res) => {
@@ -26,7 +26,7 @@ export function CarPage(){
     const deleteBook = () => {
         axios({
             method: 'post',
-            url: `http://localhost:8082/car/${car.id}`,
+            url: `http://localhost:8080/car/${car.id}`,
             headers: { "Content-Type": "multipart/form-data", Authorization: `Bearer ${localStorage.getItem('token')}` },
         }).then(() =>
             redirect('/carpark')
@@ -36,7 +36,7 @@ export function CarPage(){
     const saveBook = () => {
         const res = axios({
             method: 'post',
-            url: `http://localhost:8082/car`,
+            url: `http://localhost:8080/car`,
             data: car,
             headers: { "Content-Type": "multipart/form-data", Authorization: `Bearer ${localStorage.getItem('token')}` },
         })

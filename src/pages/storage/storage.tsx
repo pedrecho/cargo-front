@@ -27,7 +27,7 @@ export function Storage(){
     React.useEffect(() => {
         const promise = axios({
             method: 'get',
-            url: 'http://localhost:8082/device',
+            url: 'http://localhost:8080/device',
             headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         })
         promise.then((res) => {
