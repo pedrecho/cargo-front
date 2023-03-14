@@ -12,7 +12,7 @@ export function CreateMovie(){
     const addBook = () => {
         const res = axios({
             method: 'post',
-            url: 'http://localhost:8080/movie',
+            url: 'http://localhost:8082/movie',
             data: movies,
             headers: { "Content-Type": "multipart/form-data", Authorization: `Bearer ${localStorage.getItem('token')}` },
         })

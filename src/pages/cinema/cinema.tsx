@@ -27,7 +27,7 @@ export function Cinema(){
     React.useEffect(() => {
         const promise = axios({
             method: 'get',
-            url: 'http://localhost:8080/movie',
+            url: 'http://localhost:8082/movie',
             headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         })
         promise.then((res) => {

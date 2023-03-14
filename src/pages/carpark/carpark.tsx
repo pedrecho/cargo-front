@@ -26,7 +26,7 @@ export function Carpark(){
     React.useEffect(() => {
         const promise = axios({
             method: 'get',
-            url: 'http://localhost:8080/car',
+            url: 'http://localhost:8082/car',
             headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         })
         promise.then((res) => {

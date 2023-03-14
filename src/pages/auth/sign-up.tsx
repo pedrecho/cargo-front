@@ -15,7 +15,7 @@ export function SignUp({changeStage}: {changeStage: React.Dispatch<React.SetStat
     const signUp = () => {
         const promise = axios({
             method: 'post',
-            url: 'http://localhost:8080/signup',
+            url: 'http://localhost:8082/signup',
             data: {username: username.value, password: password.value, passwordConfirm: passwordConfirm.value},
             headers: { "Content-Type": "multipart/form-data" },
         })

@@ -15,7 +15,7 @@ export function BookPage(){
     React.useEffect(() => {
         const res = axios({
             method: 'get',
-            url: `http://localhost:8080/book/${id}`,
+            url: `http://localhost:8082/book/${id}`,
             headers: { "Content-Type": "multipart/form-data", Authorization: `Bearer ${localStorage.getItem('token')}` },
         })
         res.then((res) => {
@@ -26,7 +26,7 @@ export function BookPage(){
     const deleteBook = () => {
         axios({
             method: 'post',
-            url: `http://localhost:8080/book/${book.id}`,
+            url: `http://localhost:8082/book/${book.id}`,
             headers: { "Content-Type": "multipart/form-data", Authorization: `Bearer ${localStorage.getItem('token')}` },
         }).then(() =>
             redirect('/library')
@@ -36,7 +36,7 @@ export function BookPage(){
     const saveBook = () => {
         const res = axios({
             method: 'post',
-            url: `http://localhost:8080/book`,
+            url: `http://localhost:8082/book`,
             data: book,
             headers: { "Content-Type": "multipart/form-data", Authorization: `Bearer ${localStorage.getItem('token')}` },
         })

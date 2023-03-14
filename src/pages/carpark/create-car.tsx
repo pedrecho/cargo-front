@@ -12,7 +12,7 @@ export function CreateCar(){
     const addBook = () => {
         const res = axios({
             method: 'post',
-            url: 'http://localhost:8080/car',
+            url: 'http://localhost:8082/car',
             data: car,
             headers: { "Content-Type": "multipart/form-data", Authorization: `Bearer ${localStorage.getItem('token')}` },
         })

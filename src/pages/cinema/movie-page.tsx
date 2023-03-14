@@ -15,7 +15,7 @@ export function MoviePage(){
     React.useEffect(() => {
         const res = axios({
             method: 'get',
-            url: `http://localhost:8080/movie/${id}`,
+            url: `http://localhost:8082/movie/${id}`,
             headers: { "Content-Type": "multipart/form-data", Authorization: `Bearer ${localStorage.getItem('token')}` },
         })
         res.then((res) => {
@@ -30,7 +30,7 @@ export function MoviePage(){
     const deleteBook = () => {
         axios({
             method: 'post',
-            url: `http://localhost:8080/movie/${movies.id}`,
+            url: `http://localhost:8082/movie/${movies.id}`,
             headers: { "Content-Type": "multipart/form-data", Authorization: `Bearer ${localStorage.getItem('token')}` },
         }).then(() =>
             redirect('/cinema')
@@ -40,7 +40,7 @@ export function MoviePage(){
     const saveBook = () => {
         const res = axios({
             method: 'post',
-            url: `http://localhost:8080/movie`,
+            url: `http://localhost:8082/movie`,
             data: movies,
             headers: { "Content-Type": "multipart/form-data", Authorization: `Bearer ${localStorage.getItem('token')}` },
         })

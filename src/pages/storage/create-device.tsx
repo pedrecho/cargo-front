@@ -12,7 +12,7 @@ export function CreateDevice(){
     const addDevice= () => {
         const res = axios({
             method: 'post',
-            url: 'http://localhost:8080/device',
+            url: 'http://localhost:8082/device',
             data: devices,
             headers: { "Content-Type": "multipart/form-data", Authorization: `Bearer ${localStorage.getItem('token')}` },
         })
