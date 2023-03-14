@@ -24,6 +24,7 @@ export function Main(){
                 <button className={'border-2 box-border p-[10px]'} onClick={() => redirect('/carpark')}>Автопарк</button>
                 <button className={'border-2 box-border p-[10px]'} onClick={() => redirect('/cinema')}>Кинотеатр</button>
                 <button className={'border-2 box-border p-[10px]'} onClick={() => redirect('/storage')}>Склад магазина техники</button>
+                <button className={'border-2 box-border p-[10px]'} onClick={() => redirect('/cargo-traffic')}>Перевозка грузов</button>
                 <button className={'border-2 box-border p-[10px]'} onClick={exit}>Выйти</button>
             </div>
         </>
