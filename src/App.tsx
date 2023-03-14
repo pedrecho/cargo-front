@@ -28,6 +28,9 @@ import {CargoPage} from "./pages/cargo-traffic/cargo-page";
 import {BarberShop} from "./pages/barbershop/barbershop";
 import {BarberClientPage} from "./pages/barbershop/barberclient-page";
 import {CreateBarberClient} from "./pages/barbershop/create-barberclient";
+import {Conferences} from "./pages/conference/conferences";
+import {CreateConference} from "./pages/conference/create-conference";
+import {ConferencePage} from "./pages/conference/conference-page";
 
 function App() {
   return (
@@ -41,18 +44,21 @@ function App() {
         <Route path={'/storage'} element={<Storage />}/>
           <Route path={'/cargo-traffic'} element={<CargoTraffic />}/>
           <Route path={'/barbershop'} element={<BarberShop />}/>
+          <Route path={'/conferences'} element={<Conferences />}/>
         <Route path={'/create-book'} element={<CreateBook />}/>
         <Route path={'/create-car'} element={<CreateCar />}/>
         <Route path={'/create-movie'} element={<CreateMovie />}/>
         <Route path={'/create-device'} element={<CreateDevice />}/>
           <Route path={'/create-cargo'} element={<CreateCargo />}/>
           <Route path={'/create-barberclient'} element={<CreateBarberClient />}/>
+          <Route path={'/create-conference'} element={<CreateConference />}/>
           <Route path={'/book-page/:id'} element={<BookPage />} />
           <Route path={'/car-page/:id'} element={<CarPage />} />
           <Route path={'/movie-page/:id'} element={<MoviePage />} />
           <Route path={'/device-page/:id'} element={<DevicePage />} />
           <Route path={'/cargo-page/:id'} element={<CargoPage />} />
           <Route path={'/barberclient-page/:id'} element={<BarberClientPage />} />
+          <Route path={'/conference-page/:id'} element={<ConferencePage />} />
       </Routes>
     </div>
   );
