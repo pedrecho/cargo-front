@@ -23,7 +23,7 @@ export function CarPage(){
         }).catch((e) => redirect('/auth'))
     }, [id])
 
-    const deleteBook = () => {
+    const deleteCar = () => {
         axios({
             method: 'post',
             url: `http://localhost:8080/car/${car.id}`,
@@ -33,7 +33,7 @@ export function CarPage(){
         ).catch((e) => redirect('/auth'))
     }
 
-    const saveBook = () => {
+    const saveCar = () => {
         const res = axios({
             method: 'post',
             url: `http://localhost:8080/car`,
@@ -57,8 +57,8 @@ export function CarPage(){
                     <input className={'border-2 rounded-md'} value={car.registered} onChange={(e) => setCar({...car, registered: e.target.value})}/><br/>
                     <label>Владелец:</label>
                     <input className={'border-2 rounded-md'} value={car.owner} onChange={(e) => setCar({...car, owner: e.target.value})}/><br/>
-                    <button onClick={saveBook}>Сохранить</button>
-                    <button onClick={deleteBook}>Удалить</button>
+                    <button onClick={saveCar}>Сохранить</button>
+                    <button onClick={deleteCar}>Удалить</button>
                 </div>
             )}
         </div>
