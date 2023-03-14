@@ -52,22 +52,59 @@ export function CargoTraffic() {
         })])
     }
 
+    const searchCargosByDateTo = () => {
+        setCargos([...initialCargos.filter((a: Cargo) => {
+            return a.dateTo?.includes(search)
+        })])
+    }
+
     React.useEffect(() => {
         let arr: any[] = [];
-        for (let i = DAYS - 1; i >= 0; i--) {
+        for(let i = 0; i < DAYS; i++){
+            const day = new Date(Date.now()-86400000 * i);
+            const yyyy = day.getFullYear();
+            let mm = day.getMonth() + 1; // Months start at 0!
+            let dd = day.getDate();
+            let formattedToday = yyyy + '-';
+            if (mm < 10){
+                formattedToday += '0' + mm;
+            }else{
+                formattedToday += mm
+            }
+            formattedToday += '-'
+            if (dd < 10){
+                formattedToday += '0' + dd;
+            }else{
+                formattedToday += dd;
+            }
             let count = 0;
-            const day = new Date(Date.now() - 86400000 * i);
-            const formattedToday = day.toISOString().slice(0, 10);
-            for (let j = 0; j < initialCargos.length; j++) {
+            for(let j = 0; j < initialCargos.length; j++){
                 // @ts-ignore
-                if (initialCargos[j].dataTo == formattedToday) {
+                if(initialCargos[j].dateTo == formattedToday){
                     count++;
                 }
             }
             arr.push({date: formattedToday, count})
         }
-        setGist(arr)
+        setGist(arr.reverse())
     }, [initialCargos])
+
+    // React.useEffect(() => {
+    //     let arr: any[] = [];
+    //     for (let i = DAYS - 1; i >= 0; i--) {
+    //         let count = 0;
+    //         const day = new Date(Date.now() - 86400000 * i);
+    //         const formattedToday = day.toISOString().slice(0, 10);
+    //         for (let j = 0; j < initialCargos.length; j++) {
+    //             // @ts-ignore
+    //             if (initialCargos[j].dataTo == formattedToday) {
+    //                 count++;
+    //             }
+    //         }
+    //         arr.push({date: formattedToday, count})
+    //     }
+    //     setGist(arr)
+    // }, [initialCargos])
 
     const labels = [...gist.map((el) => el.date)];
     const data = {
@@ -103,6 +140,10 @@ export function CargoTraffic() {
                 <button className={'ml-2 border-2 w-[100px] h-[30px]'} onClick={searchCargos}>Поиск</button>
                 <button className={'ml-2 border-2 w-[30px] h-[30px]'} onClick={() => setCargos(initialCargos)}>X
                 </button>
+
+                <button className={'ml-2 border-2 w-[200px] h-[30px]'} onClick={searchCargosByDateTo}>Поиск по дате прибытия</button>
+                <button className={'ml-2 border-2 w-[30px] h-[30px]'} onClick={() => setCargos(initialCargos)}>X
+                </button>
             </div>
             <p>Количество грузов: {cargos.length}</p>
             <table className={'border-2 mt-4'}>
@@ -117,6 +158,7 @@ export function CargoTraffic() {
                 <tbody>
                 {cargos.map((cargo: Cargo) => (
                     <tr className={'border-2'} key={cargo.id} onClick={() => redirect(`/cargo-page/${cargo.id}`)}>
+                        <td className={'border-2 text-center'}>{cargo.name} </td>
                         <td className={'border-2 text-center'}>{cargo.content} </td>
                         <td className={'border-2 text-center'}>{cargo.cityFrom} </td>
                         <td className={'border-2 text-center'}>{cargo.cityTo} </td>
