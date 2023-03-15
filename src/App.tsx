@@ -31,6 +31,9 @@ import {CreateBarberClient} from "./pages/barbershop/create-barberclient";
 import {Conferences} from "./pages/conference/conferences";
 import {CreateConference} from "./pages/conference/create-conference";
 import {ConferencePage} from "./pages/conference/conference-page";
+import {Theatre} from "./pages/theatre/theatre";
+import {CreatePerformance} from "./pages/theatre/create-performance";
+import {PerformancePage} from "./pages/theatre/performance-page";
 
 function App() {
   return (
@@ -41,6 +44,7 @@ function App() {
         <Route path={'/library'} element={<Library />}/>
         <Route path={'/carpark'} element={<Carpark />}/>
         <Route path={'/cinema'} element={<Cinema />}/>
+        <Route path={'/theatre'} element={<Theatre />}/>
         <Route path={'/storage'} element={<Storage />}/>
           <Route path={'/cargo-traffic'} element={<CargoTraffic />}/>
           <Route path={'/barbershop'} element={<BarberShop />}/>
@@ -48,6 +52,7 @@ function App() {
         <Route path={'/create-book'} element={<CreateBook />}/>
         <Route path={'/create-car'} element={<CreateCar />}/>
         <Route path={'/create-movie'} element={<CreateMovie />}/>
+        <Route path={'/create-performance'} element={<CreatePerformance />}/>
         <Route path={'/create-device'} element={<CreateDevice />}/>
           <Route path={'/create-cargo'} element={<CreateCargo />}/>
           <Route path={'/create-barberclient'} element={<CreateBarberClient />}/>
@@ -55,6 +60,7 @@ function App() {
           <Route path={'/book-page/:id'} element={<BookPage />} />
           <Route path={'/car-page/:id'} element={<CarPage />} />
           <Route path={'/movie-page/:id'} element={<MoviePage />} />
+          <Route path={'/performance-page/:id'} element={<PerformancePage />} />
           <Route path={'/device-page/:id'} element={<DevicePage />} />
           <Route path={'/cargo-page/:id'} element={<CargoPage />} />
           <Route path={'/barberclient-page/:id'} element={<BarberClientPage />} />
