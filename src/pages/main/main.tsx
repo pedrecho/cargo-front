@@ -20,14 +20,7 @@ export function Main(){
     return(
         <>
             <div className={'flex flex-row w-full gap-[10px] mt-4 ml-4'}>
-                <button className={'border-2 box-border p-[10px]'} onClick={() => redirect('/library')}>Библиотека</button>
-                <button className={'border-2 box-border p-[10px]'} onClick={() => redirect('/carpark')}>Автопарк</button>
-                <button className={'border-2 box-border p-[10px]'} onClick={() => redirect('/cinema')}>Кинотеатр</button>
-                <button className={'border-2 box-border p-[10px]'} onClick={() => redirect('/storage')}>Склад магазина техники</button>
                 <button className={'border-2 box-border p-[10px]'} onClick={() => redirect('/cargo-traffic')}>Перевозка грузов</button>
-                <button className={'border-2 box-border p-[10px]'} onClick={() => redirect('/barbershop')}>Барбершоп</button>
-                <button className={'border-2 box-border p-[10px]'} onClick={() => redirect('/conferences')}>Конференции</button>
-                <button className={'border-2 box-border p-[10px]'} onClick={() => redirect('/theatre')}>Театр</button>
                 <button className={'border-2 box-border p-[10px]'} onClick={exit}>Выйти</button>
             </div>
         </>
