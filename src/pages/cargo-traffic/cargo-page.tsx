@@ -25,7 +25,7 @@ export function CargoPage(){
             })
         res.then((res) =>{
             setCargos({...res.data, registered: time(res.data.registered)})
-        }).catch((e) => redirect('/cargo-page'))
+        }).catch((e) => redirect('/auth'))
     }, [id])
 
     const time = (value: string) => {

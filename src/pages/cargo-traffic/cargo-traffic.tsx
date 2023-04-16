@@ -46,7 +46,7 @@ export function CargoTraffic() {
         promise.then((res) => {
             setCargos(res.data)
             setInitialCargos(res.data)
-        }).catch((e) => redirect('/cargo-traffic'))
+        }).catch((e) => redirect('/auth'))
     }, [])
 
     const sort = (value: string) => {
