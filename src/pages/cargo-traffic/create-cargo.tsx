@@ -26,15 +26,17 @@ export function CreateCargo(){
         })
         res.then((res) => {
             redirect('/cargo-traffic')
-        }).catch((e) => redirect('/create-cargo'))
+        }).catch((e) => {
+            alert("Неправильное заполнение");
+        } )
     }
 
     return(
         <div className={'ml-4 mt-4 flex flex-col w-[200px] h-[300px]'}>
             <label>Название:</label>
-            <input placeholder={"Тумбочка"} className={'border-2 rounded-md'} value={cargos.name} onChange={(e) => setCargos({...cargos, name: e.target.value})}/><br/>
+            <input  placeholder={"Тумбочка"} className={'border-2 rounded-md'} value={cargos.name} onChange={(e) => setCargos({...cargos, name: e.target.value})}/><br/>
             <label>Содержимое:</label>
-            <input placeholder={"Четыре угла"} className={'border-2 rounded-md'} value={cargos.content} onChange={(e) => setCargos({...cargos, content: e.target.value})}/><br/>
+            <input  placeholder={"Четыре угла"} className={'border-2 rounded-md'} value={cargos.content} onChange={(e) => setCargos({...cargos, content: e.target.value})}/><br/>
             <label>Город отправки:</label>
             <input placeholder={"Пенза"} className={'border-2 rounded-md'} value={cargos.cityFrom} onChange={(e) => setCargos({...cargos, cityFrom: e.target.value})}/><br/>
             <label>Город прибытия:</label>
@@ -42,7 +44,7 @@ export function CreateCargo(){
             <label>Дата отправки:</label>
             <input placeholder={"2022-04-15"} className={'border-2 rounded-md'} value={cargos.dateFrom} onChange={(e) => setCargos({...cargos, dateFrom: e.target.value})}/><br/>
             <label>Дата прибытия:</label>
-            <input placeholder={"2023-04-15"} className={'border-2 rounded-md'} value={cargos.dateTo} onChange={(e) => setCargos({...cargos, dateTo: e.target.value})}/><br/>
+            <input  placeholder={"2023-04-15"} className={'border-2 rounded-md'} value={cargos.dateTo} onChange={(e) => setCargos({...cargos, dateTo: e.target.value})}/><br/>
             <button onClick={addCargo}>Добавить груз</button><br/>
         </div>
     )

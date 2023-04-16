@@ -36,29 +36,6 @@ export function CargoTraffic() {
     const [checkedDateFrom, setCheckedDateFrom] = React.useState(true);
     const [checkedDateTo, setCheckedDateTo] = React.useState(true);
 
-    const handleChangeName = () => {
-        setCheckedName(!checkedName);
-    };
-
-    const handleChangeContent = () => {
-        setCheckedContent(!checkedContent);
-    };
-
-    const handleChangChangeCityFrom = () => {
-        setCheckedCityFrom(!checkedCityFrom);
-    };
-
-    const handleChangeCityTo = () => {
-        setCheckedCityTo(!checkedCityTo);
-    };
-
-    const handleChangChangeDateFrom = () => {
-        setCheckedDateFrom(!checkedDateFrom);
-    };
-
-    const handleChangeDateTo = () => {
-        setCheckedDateTo(!checkedDateTo);
-    };
 
     React.useEffect(() => {
         const promise = axios({
@@ -69,7 +46,7 @@ export function CargoTraffic() {
         promise.then((res) => {
             setCargos(res.data)
             setInitialCargos(res.data)
-        }).catch((e) => redirect('/auth'))
+        }).catch((e) => redirect('/cargo-traffic'))
     }, [])
 
     const sort = (value: string) => {
@@ -199,30 +176,29 @@ export function CargoTraffic() {
             {isModalVisible ?
                 <div>
                     <label>Поиск по: </label>
-                    <label>
-                        Name: <input type="checkbox" checked={checkedName}
-                                     onChange={e => setCheckedName(e.target.checked)}/>
-                    </label>
-                    <label>
-                        Content: <input type="checkbox" checked={checkedContent}
-                                        onChange={e => setCheckedContent(e.target.checked)}/>
-                    </label>
-                    <label>
-                        City from: <input type="checkbox" checked={checkedCityFrom}
-                                          onChange={e => setCheckedCityFrom(e.target.checked)}/>
-                    </label>
-                    <label>
-                        City to: <input type="checkbox" checked={checkedCityTo}
-                                        onChange={e => setCheckedCityTo(e.target.checked)}/>
-                    </label>
-                    <label>
-                        Date from: <input type="checkbox" checked={checkedDateFrom}
-                                          onChange={e => setCheckedDateFrom(e.target.checked)}/>
-                    </label>
-                    <label>
-                        Date to: <input type="checkbox" checked={checkedDateTo}
-                                        onChange={e => setCheckedDateTo(e.target.checked)}/>
-                    </label>
+                    <label> Название </label>
+                    <input type="checkbox" checked={checkedName}
+                           onChange={e => setCheckedName(e.target.checked)}/>
+
+                    <label> Содержимое </label>
+                    <input type="checkbox" checked={checkedContent}
+                           onChange={e => setCheckedContent(e.target.checked)}/>
+                    <label> Город отправки </label>
+                    <input type="checkbox" checked={checkedCityFrom}
+                           onChange={e => setCheckedCityFrom(e.target.checked)}/>
+
+                    <label> Город прибытия </label>
+                    <input type="checkbox" checked={checkedCityTo}
+                           onChange={e => setCheckedCityTo(e.target.checked)}/>
+
+                    <label> Дата отправки </label>
+                    <input type="checkbox" checked={checkedDateFrom}
+                           onChange={e => setCheckedDateFrom(e.target.checked)}/>
+
+                    <label> Дата прибытия </label>
+                    <input type="checkbox" checked={checkedDateTo}
+                           onChange={e => setCheckedDateTo(e.target.checked)}/>
+
                 </div> : null
             }
 
