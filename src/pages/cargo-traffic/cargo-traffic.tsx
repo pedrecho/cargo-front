@@ -65,17 +65,6 @@ export function CargoTraffic() {
         })])
     }
 
-    const searchCargosByDateTo = () => {
-        setCargos([...initialCargos.filter((a: Cargo) => {
-            return a.dateTo?.includes(search) && setCheckedDateTo
-        })])
-    }
-
-    // const filterCargo = () => {
-    //     setModalVisible(!isModalVisible);
-    //     setOpacity(1 - opacity);
-    //     setDisabled(!disabled);
-    // }
 
     React.useEffect(() => {
         let arr: any[] = [];
@@ -163,12 +152,6 @@ export function CargoTraffic() {
                 <button className={'ml-2 border-2 w-[30px] h-[30px]'}
                         onClick={() => setCargos(initialCargos)}>X
                 </button>
-
-                <button className={'ml-2 border-2 w-[200px] h-[30px]'} onClick={searchCargosByDateTo}>Поиск по дате
-                    прибытия
-                </button>
-                <button className={'ml-2 border-2 w-[30px] h-[30px]'} onClick={() => setCargos(initialCargos)}>X
-                </button>
                 <br/>
             </div>
 
@@ -176,26 +159,26 @@ export function CargoTraffic() {
             {isModalVisible ?
                 <div>
                     <label>Поиск по: </label>
-                    <label> Название </label>
-                    <input type="checkbox" checked={checkedName}
+                    <label> | Названию </label>
+                    <input type="checkbox"  checked={checkedName}
                            onChange={e => setCheckedName(e.target.checked)}/>
 
-                    <label> Содержимое </label>
+                    <label> | Содержимому </label>
                     <input type="checkbox" checked={checkedContent}
                            onChange={e => setCheckedContent(e.target.checked)}/>
-                    <label> Город отправки </label>
+                    <label> | Городу отправки </label>
                     <input type="checkbox" checked={checkedCityFrom}
                            onChange={e => setCheckedCityFrom(e.target.checked)}/>
 
-                    <label> Город прибытия </label>
+                    <label> | Городу прибытия </label>
                     <input type="checkbox" checked={checkedCityTo}
                            onChange={e => setCheckedCityTo(e.target.checked)}/>
 
-                    <label> Дата отправки </label>
+                    <label> | Дате отправки </label>
                     <input type="checkbox" checked={checkedDateFrom}
                            onChange={e => setCheckedDateFrom(e.target.checked)}/>
 
-                    <label> Дата прибытия </label>
+                    <label> | Дате прибытия </label>
                     <input type="checkbox" checked={checkedDateTo}
                            onChange={e => setCheckedDateTo(e.target.checked)}/>
 
