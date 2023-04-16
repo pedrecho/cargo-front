@@ -26,6 +26,17 @@ export function CargoTraffic() {
     const [search, setSearch] = React.useState('')
     const [gist, setGist] = React.useState<any>([])
 
+    const [isModalVisible, setModalVisible] = React.useState(true);
+    // const [disabled, setDisabled] = React.useState(false);
+    // const [opacity, setOpacity] = React.useState(1);
+    const [checkedName, setCheckedName] = React.useState(true);
+    const [checkedContent, setCheckedContent] = React.useState(true);
+    const [checkedCityFrom, setCheckedCityFrom] = React.useState(true);
+    const [checkedCityTo, setCheckedCityTo] = React.useState(true);
+    const [checkedDateFrom, setCheckedDateFrom] = React.useState(true);
+    const [checkedDateTo, setCheckedDateTo] = React.useState(true);
+
+
     React.useEffect(() => {
         const promise = axios({
             method: 'get',
@@ -35,7 +46,7 @@ export function CargoTraffic() {
         promise.then((res) => {
             setCargos(res.data)
             setInitialCargos(res.data)
-        }).catch((e) => redirect('/auth'))
+        }).catch((e) => redirect('/cargo-traffic'))
     }, [])
 
     const sort = (value: string) => {
@@ -48,39 +59,36 @@ export function CargoTraffic() {
 
     const searchCargos = () => {
         setCargos([...initialCargos.filter((a: Cargo) => {
-            return a.name?.includes(search) || a.content?.includes(search) || a.cityFrom?.includes(search) || a.cityTo?.includes(search) || a.dateFrom?.includes(search) || a.dateTo?.includes(search)
+            return (a.name?.includes(search) && checkedName) || (a.content?.includes(search) && checkedContent)
+                || (a.cityFrom?.includes(search) && checkedCityFrom) || (a.cityTo?.includes(search) && checkedCityFrom)
+                || (a.dateFrom?.includes(search) && checkedDateFrom) || (a.dateTo?.includes(search) && checkedDateTo)
         })])
     }
 
-    const searchCargosByDateTo = () => {
-        setCargos([...initialCargos.filter((a: Cargo) => {
-            return a.dateTo?.includes(search)
-        })])
-    }
 
     React.useEffect(() => {
         let arr: any[] = [];
-        for(let i = 0; i < DAYS; i++){
-            const day = new Date(Date.now()-86400000 * i);
+        for (let i = 0; i < DAYS; i++) {
+            const day = new Date(Date.now() - 86400000 * i);
             const yyyy = day.getFullYear();
             let mm = day.getMonth() + 1; // Months start at 0!
             let dd = day.getDate();
             let formattedToday = yyyy + '-';
-            if (mm < 10){
+            if (mm < 10) {
                 formattedToday += '0' + mm;
-            }else{
+            } else {
                 formattedToday += mm
             }
             formattedToday += '-'
-            if (dd < 10){
+            if (dd < 10) {
                 formattedToday += '0' + dd;
-            }else{
+            } else {
                 formattedToday += dd;
             }
             let count = 0;
-            for(let j = 0; j < initialCargos.length; j++){
+            for (let j = 0; j < initialCargos.length; j++) {
                 // @ts-ignore
-                if(initialCargos[j].dateTo == formattedToday){
+                if (initialCargos[j].dateTo == formattedToday) {
                     count++;
                 }
             }
@@ -137,14 +145,47 @@ export function CargoTraffic() {
                 </button>
                 <input value={search} onChange={(e) => setSearch(e.target.value)}
                        className={'border-2 w-[150px] h-[30px] ml-4 rounded-md'}/>
-                <button className={'ml-2 border-2 w-[100px] h-[30px]'} onClick={searchCargos}>Поиск</button>
-                <button className={'ml-2 border-2 w-[30px] h-[30px]'} onClick={() => setCargos(initialCargos)}>X
-                </button>
 
-                <button className={'ml-2 border-2 w-[200px] h-[30px]'} onClick={searchCargosByDateTo}>Поиск по дате прибытия</button>
-                <button className={'ml-2 border-2 w-[30px] h-[30px]'} onClick={() => setCargos(initialCargos)}>X
+                <button className={'ml-2 border-2 w-[100px] h-[30px]'}
+                        onClick={searchCargos}>Поиск
                 </button>
+                <button className={'ml-2 border-2 w-[30px] h-[30px]'}
+                        onClick={() => setCargos(initialCargos)}>X
+                </button>
+                <br/>
             </div>
+
+
+            {isModalVisible ?
+                <div>
+                    <label>Поиск по: </label>
+                    <label> | Названию </label>
+                    <input type="checkbox"  checked={checkedName}
+                           onChange={e => setCheckedName(e.target.checked)}/>
+
+                    <label> | Содержимому </label>
+                    <input type="checkbox" checked={checkedContent}
+                           onChange={e => setCheckedContent(e.target.checked)}/>
+                    <label> | Городу отправки </label>
+                    <input type="checkbox" checked={checkedCityFrom}
+                           onChange={e => setCheckedCityFrom(e.target.checked)}/>
+
+                    <label> | Городу прибытия </label>
+                    <input type="checkbox" checked={checkedCityTo}
+                           onChange={e => setCheckedCityTo(e.target.checked)}/>
+
+                    <label> | Дате отправки </label>
+                    <input type="checkbox" checked={checkedDateFrom}
+                           onChange={e => setCheckedDateFrom(e.target.checked)}/>
+
+                    <label> | Дате прибытия </label>
+                    <input type="checkbox" checked={checkedDateTo}
+                           onChange={e => setCheckedDateTo(e.target.checked)}/>
+
+                </div> : null
+            }
+
+
             <p>Количество грузов: {cargos.length}</p>
             <table className={'border-2 mt-4'}>
                 <thead>
