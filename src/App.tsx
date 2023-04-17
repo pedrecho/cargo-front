@@ -10,6 +10,7 @@ import './App.css';
 import {CargoTraffic} from "./pages/cargo-traffic/cargo-traffic";
 import {CreateCargo} from "./pages/cargo-traffic/create-cargo";
 import {CargoPage} from "./pages/cargo-traffic/cargo-page";
+import {Autoblog} from "./pages/autoblog/autoblog-main";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path={'/cargo-traffic'} element={<CargoTraffic />}/>
           <Route path={'/create-cargo'} element={<CreateCargo />}/>
           <Route path={'/cargo-page/:id'} element={<CargoPage />} />
+          <Route path={'/autoblog'} element={<Autoblog />} />
       </Routes>
     </div>
   );
