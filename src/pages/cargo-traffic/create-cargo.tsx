@@ -1,5 +1,5 @@
 import * as React from 'react'
-import axios from "axios";
+import axios, {AxiosError} from "axios";
 import {useNavigate} from "react-router-dom";
 import {Cargo} from "./cargo-traffic";
 
@@ -26,7 +26,12 @@ export function CreateCargo(){
         })
         res.then((res) => {
             redirect('/cargo-traffic')
-        }).catch((e) => redirect('/auth'))
+        }).catch((reason: AxiosError) => {
+            if (reason.response!.status === 401) {
+                redirect('/auth')
+            } else if (reason.response!.status === 403) {
+                redirect('/cargo-traffic')
+            }})
     }
 
     return(

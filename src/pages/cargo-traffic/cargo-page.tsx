@@ -2,6 +2,7 @@ import * as React from 'react'
 import {redirect, useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 import {Cargo} from "./cargo-traffic";
+import {AxiosError} from "axios/index";
 
 export function CargoPage(){
     const {id} = useParams()
@@ -39,7 +40,12 @@ export function CargoPage(){
             headers: { "Content-Type": "multipart/form-data", Authorization: `Bearer ${localStorage.getItem('token')}` },
         }).then(() =>
             redirect('/cargo-traffic')
-        ).catch((e) => redirect('/auth'))
+        ).catch((reason: AxiosError) => {
+            if (reason.response!.status === 401) {
+                redirect('/auth')
+            } else if (reason.response!.status === 403) {
+                redirect('/cargo-traffic')
+            }})
     }
 
     const saveCargo = () => {
@@ -51,7 +57,12 @@ export function CargoPage(){
         })
         res.then((res) => {
             redirect('/cargo-traffic')
-        }).catch((e) => redirect('/auth'))
+        }).catch((reason: AxiosError) => {
+            if (reason.response!.status === 401) {
+                redirect('/auth')
+            } else if (reason.response!.status === 403) {
+                redirect('/cargo-traffic')
+            }})
     }
 
     return(
@@ -70,8 +81,21 @@ export function CargoPage(){
                     <input className={'border-2 rounded-md'} value={cargos.dateFrom} onChange={(e) => setCargos({...cargos, dateFrom: e.target.value})}/><br/>
                     <label>Дата прибытия:</label>
                     <input className={'border-2 rounded-md'} value={cargos.dateTo} onChange={(e) => setCargos({...cargos, dateTo: e.target.value})}/><br/>
-                    <button onClick={saveCargo}>Сохранить</button>
-                    <button onClick={deleteCargo}>Удалить</button>
+                    {
+                        ((localStorage.getItem('decoded')?.includes('MANAGER'))) &&
+                        <div className={'mt-4 ml-4 rounded-md box-border p-[10px] flex flex-col'}>
+                            <button onClick={saveCargo}>Сохранить</button>
+                            <button onClick={deleteCargo}>Удалить</button>
+                        </div>
+                    }
+
+                    {
+                        ((localStorage.getItem('decoded')?.includes('MANAGER')) == false) &&
+                        <div className={'mt-4 ml-4 rounded-md box-border p-[10px] flex flex-col'}>
+                            <button onClick={(e) => redirect('/cargo-traffic')}>Вернуться</button>
+                        </div>
+                    }
+
                 </div>
             )}
         </div>

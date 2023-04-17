@@ -129,12 +129,20 @@ export function CargoTraffic() {
         Legend
     );
 
+
+
+
+    console.log(localStorage.getItem('decoded'))
+
     return (
         <div className={'mt-4 ml-4 flex flex-col'}>
             <div className={'flex flex-row items-center'}>
-                <button className={'border-2 box-border p-[10px] w-[150px]'}
-                        onClick={() => redirect('/create-cargo')}>Создать груз
-                </button>
+                {
+                    ((localStorage.getItem('decoded')?.includes('MANAGER'))) &&
+                        <button className={'border-2 box-border p-[10px] w-[150px]'}
+                                onClick={() => redirect('/create-cargo')}>Создать груз
+                        </button>
+                }
                 <input value={search} onChange={(e) => setSearch(e.target.value)}
                        className={'border-2 w-[150px] h-[30px] ml-4 rounded-md'}/>
                 <button className={'ml-2 border-2 w-[100px] h-[30px]'} onClick={searchCargos}>Поиск</button>
@@ -170,6 +178,7 @@ export function CargoTraffic() {
             </table>
             <Bar data={data}/>
         </div>
+
     )
 
 }
