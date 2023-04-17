@@ -3,6 +3,8 @@ import * as React from 'react'
 import { useInput } from "./useInput";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import jwt_decode from "jwt-decode";
+
 
 export function SignIn({changeStage}: {changeStage: React.Dispatch<React.SetStateAction<boolean>>}){
 
@@ -20,6 +22,9 @@ export function SignIn({changeStage}: {changeStage: React.Dispatch<React.SetStat
         })
         promise.then((res) => {
             localStorage.setItem('token', res.data.token)
+            localStorage.setItem('decoded', window.atob(res.data.token.split(".")[1]))
+            //console.log((window.atob(res.data.token.split(".")[1])))
+            //console.log(localStorage.getItem('decoded'))
             redirect('/')
         })
     }
