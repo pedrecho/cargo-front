@@ -70,15 +70,15 @@ export function CargoPage(){
             {cargos && (
                 <div className={'w-[300px] border-2 mt-4 ml-4 rounded-md box-border p-[10px] flex flex-col'}>
                     <label>Название:</label>
-                    <input className={'border-2 rounded-md'} value={cargos.name} onChange={(e) => setCargos({...cargos, name: e.target.value})}/><br/>
+                    <input  className={'border-2 rounded-md'} value={cargos.name} onChange={(e) => setCargos({...cargos, name: e.target.value})}/><br/>
                     <label>Содержимое:</label>
-                    <input className={'border-2 rounded-md'} value={cargos.content} onChange={(e) => setCargos({...cargos, content: e.target.value})}/><br/>
+                    <input  className={'border-2 rounded-md'} value={cargos.content} onChange={(e) => setCargos({...cargos, content: e.target.value})}/><br/>
                     <label>Город отправки:</label>
-                    <input className={'border-2 rounded-md'} value={cargos.cityFrom} onChange={(e) => setCargos({...cargos, cityFrom: e.target.value})}/><br/>
+                    <input  className={'border-2 rounded-md'} value={cargos.cityFrom} onChange={(e) => setCargos({...cargos, cityFrom: e.target.value})}/><br/>
                     <label>Город прибытия:</label>
-                    <input className={'border-2 rounded-md'} value={cargos.cityTo} onChange={(e) => setCargos({...cargos, cityTo: e.target.value})}/><br/>
+                    <input  className={'border-2 rounded-md'} value={cargos.cityTo} onChange={(e) => setCargos({...cargos, cityTo: e.target.value})}/><br/>
                     <label>Дата отправки:</label>
-                    <input className={'border-2 rounded-md'} value={cargos.dateFrom} onChange={(e) => setCargos({...cargos, dateFrom: e.target.value})}/><br/>
+                    <input  className={'border-2 rounded-md'} value={cargos.dateFrom} onChange={(e) => setCargos({...cargos, dateFrom: e.target.value})}/><br/>
                     <label>Дата прибытия:</label>
                     <input className={'border-2 rounded-md'} value={cargos.dateTo} onChange={(e) => setCargos({...cargos, dateTo: e.target.value})}/><br/>
                     {
@@ -95,7 +95,6 @@ export function CargoPage(){
                             <button onClick={(e) => redirect('/cargo-traffic')}>Вернуться</button>
                         </div>
                     }
-
                 </div>
             )}
         </div>

@@ -13,7 +13,6 @@ export function Main(){
     }, [])
 
     const exit = () => {
-        localStorage.clear();
         redirect('/auth');
     }
 

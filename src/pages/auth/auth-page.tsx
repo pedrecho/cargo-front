@@ -7,6 +7,10 @@ export function AuthPage(){
 
     const [isSignIn, setIsSignIn] = React.useState(true);
 
+    React.useEffect(() => {
+        localStorage.clear();
+    }, [])
+
     return(
         <>
             {isSignIn ? (<SignIn changeStage={setIsSignIn}/>) : (<SignUp changeStage={setIsSignIn}/>)}
