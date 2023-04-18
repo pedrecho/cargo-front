@@ -138,10 +138,6 @@ export function CargoTraffic() {
     );
 
 
-
-
-    console.log(localStorage.getItem('decoded'))
-
     return (
         <div className={'mt-4 ml-4 flex flex-col'}>
             <div className={'flex flex-row items-center'}>
