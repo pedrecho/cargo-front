@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import {Footer} from "../components/footer";
 
 export function Main(){
 
@@ -23,6 +24,7 @@ export function Main(){
                 <button className={'border-2 box-border p-[10px]'} onClick={() => redirect('/autoblog')}>Автоблог</button>
                 <button className={'border-2 box-border p-[10px]'} onClick={exit}>Выйти</button>
             </div>
+            <Footer/>
         </>
     )
 }

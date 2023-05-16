@@ -3,6 +3,7 @@ import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import {Bar} from "react-chartjs-2";
 import {BarElement, CategoryScale, Chart, Legend, LinearScale, Title, Tooltip} from "chart.js";
+import {Footer} from "../components/footer";
 
 
 export interface Cargo {
@@ -139,7 +140,7 @@ export function CargoTraffic() {
 
 
     return (
-        <div className={'mt-4 ml-4 flex flex-col'}>
+        <div className={'mt-4 ml-4 flex flex-col '}>
             <div className={'flex flex-row items-center'}>
                 {
                     ((localStorage.getItem('decoded')?.includes('MANAGER'))) &&
@@ -214,6 +215,7 @@ export function CargoTraffic() {
                 </tbody>
             </table>
             <Bar data={data}/>
+            <Footer></Footer>
         </div>
 
     )
