@@ -2,6 +2,7 @@ import * as React from 'react'
 import axios, {AxiosError} from "axios";
 import {useNavigate} from "react-router-dom";
 import {Cargo} from "./cargo-traffic";
+import {Footer} from "../components/footer";
 
 export function CreateCargo(){
     const [cargos, setCargos] = React.useState<Cargo>({
@@ -49,6 +50,7 @@ export function CreateCargo(){
             <label>Дата прибытия:</label>
             <input  placeholder={"2023-04-15"} className={'border-2 rounded-md'} value={cargos.dateTo} onChange={(e) => setCargos({...cargos, dateTo: e.target.value})}/><br/>
             <button onClick={addCargo}>Добавить груз</button><br/>
+        <Footer/>
         </div>
     )
 }

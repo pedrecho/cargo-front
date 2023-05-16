@@ -3,6 +3,7 @@ import {redirect, useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 import {Cargo} from "./cargo-traffic";
 import {AxiosError} from "axios/index";
+import {Footer} from "../components/footer";
 
 export function CargoPage(){
     const {id} = useParams()
@@ -97,6 +98,7 @@ export function CargoPage(){
                     }
                 </div>
             )}
+            <Footer/>
         </div>
     )
 
