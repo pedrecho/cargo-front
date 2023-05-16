@@ -24,11 +24,9 @@ export function Footer() {
                 }
             </ul>
                     <ul className="social-icons">
-  <li><a className="social-icon-dzen" href="https://dzen.ru/" title="..." target="_blank" rel="noopener"></a></li>
-  <li><a className="social-icon-ok" href="#" title="https://ok.ru/" target="_blank" rel="noopener"></a></li>
-  <li><a className="social-icon-vk" href="#" title="https://vk.com/" target="_blank" rel="noopener"></a></li>
+  <li><a className="social-icon-dzen" href="https://dzen.ru/id/623c70ac866e9a29f1b5eb1a" title="..." target="_blank" rel="noopener"></a></li>
   <li><a className="social-icon-telegram" href="https://web.telegram.org/k/" title="..." target="_blank" rel="noopener"></a></li>
-  <li><a className="social-icon-youtube" href="https://www.youtube.com/" title="..." target="_blank" rel="noopener"></a></li>
+  <li><a className="social-icon-youtube" href="https://www.youtube.com/@teelxp" title="..." target="_blank" rel="noopener"></a></li>
 </ul>
 
 
